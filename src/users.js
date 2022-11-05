@@ -38,10 +38,10 @@ export async function updateUser(req,res) {
     return
   }
   const db = dbConnect()
-  const doc = await db.collection('users').doc(uid).update(req.body)
-  let user = doc.data()
-  user.uid = doc.id
-  user.password = undefined
+  await db.collection('users').doc(uid).update(req.body)
+  // let user = doc.data()
+  // user.uid = doc.id
+  // user.password = undefined
   res.status(202).send({message: 'updated'})
 
 }
